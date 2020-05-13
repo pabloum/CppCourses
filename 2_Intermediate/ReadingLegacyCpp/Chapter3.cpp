@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+// Macros
+#define SQ(a) (a)*(a)
+#define ARRAY_SIZE 5
+
+// typedef
+typedef std::vector<int> VectorOfInt;
+
+// Function pointer
+// ---
+
+int main(int argc, char const *argv[]) {
+
+  int myArray[ARRAY_SIZE]  = {1,2,3,4,5};
+  VectorOfInt vector = {6,7,8,9,10};
+
+  for (auto &vble : myArray) {
+    std::cout << "The square is: " << SQ(vble) << '\n';
+  }
+
+  std::for_each(vector.begin(), vector.end(), [](const int& position) {
+    std::cout << "My VectorOfInt position: " << position << '\n';
+  });
+
+  return 0;
+}
+
+/*
+OUTPUT:
+
+The square is: 1
+The square is: 4
+The square is: 9
+The square is: 16
+The square is: 25
+*/
