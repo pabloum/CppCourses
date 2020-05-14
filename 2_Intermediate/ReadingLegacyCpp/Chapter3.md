@@ -100,7 +100,7 @@ But when should we use it?
   `typedef int (MyClass::*funcptr) (int a, int b);`   -> A function pointer to a member function
   `funcptr action;`
   `action = &MyClass::myMethod;`   -> Be careful. The & is required
-  `(myInstance.*action)();`   -> It is important to dereference.
+  `(myInstance.*action)(a,b);`   -> It is important to dereference.
 
 But we are probably never going to need to use this syntax. But we may run into it in old legacy code.
 
