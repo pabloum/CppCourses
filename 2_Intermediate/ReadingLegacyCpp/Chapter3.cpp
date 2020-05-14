@@ -10,6 +10,11 @@
 typedef std::vector<int> VectorOfInt;
 
 // Function pointer
+
+int addition(int a, int b) { return a+b; }
+int substraction(int a, int b) { return a-b; }
+typedef int (*operation)(int a, int b);
+
 // ---
 
 int main(int argc, char const *argv[]) {
@@ -24,6 +29,22 @@ int main(int argc, char const *argv[]) {
   std::for_each(vector.begin(), vector.end(), [](const int& position) {
     std::cout << "My VectorOfInt position: " << position << '\n';
   });
+
+
+  operation op = addition;
+  int resultAddition = 0;
+  for (int i = 0; i < ARRAY_SIZE; i++)
+    resultAddition = op(myArray[i],resultAddition);
+
+  int resultSubstraction = 0;
+  op = substraction;
+  for (int i = 0; i < ARRAY_SIZE; i++)
+    resultSubstraction = op(myArray[i],resultSubstraction);
+
+  std::cout << "The result of the addition was: " << resultAddition << '\n';
+  std::cout << "The result of the substraction was: " << resultSubstraction << '\n';
+
+  op = addition;
 
   return 0;
 }
