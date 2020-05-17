@@ -143,9 +143,12 @@ _________________
 ### Void pointer
 ****************
 
-hey
-
-
+void *
+- It is NOT a nullptr. It is a pointer to something without a type, to anything.
+- We can take any kind of pointer and cast it into a void pointer
+- We may pass it to a function, and then cast it into what we know it is, e.g. within a switch.
+  * In modern C++ we wouldn't do this. We would use polymorphism.
+- It can never be used as it is. You MUST cast it to what you know it is, in order to perform operations with it. That is good, that makes C++ type safe :D
 
 |
 |
