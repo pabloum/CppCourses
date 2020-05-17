@@ -4,7 +4,7 @@
 --------------------------------------------------
 
 ##Content:
-  Macros, Typedef, Function pointers, Casting
+  Macros, Typedef, Function pointers, Casting, void pointer, printf()
 --------------------------------------------------
 |
 |
@@ -114,5 +114,45 @@ _________________
 ### Casting
 ****************
 
+`int i = (int) 4.9;`  // C-style cast
+`int i = static_cast<int>(4.9);`  // modern C++ cast. Explicit and clear what you're doing
+
+C-tyle casting was the same for a lot of situations. Base class, or subclass, or derived class. Migth not always be safe, and it was not completly explicit and clear.
+
+Up cast are always safe.
+Down casts are only safe if you know that the pointer is geniuly pointing to an instance of the derived class
+
+`p = (Employee*) t;`
+`p = (Transaction) t;`
+
+It's very hard to know what kind of cast it is. You might lose data or information with casting. Please don't copy and paste this sort of casting.
+
+Try to use templated cast in new code.
+
+static_cast
+const_cast
+reinterpret_cast
+
+
+
+|
+|
+|
+|
+_________________
+### Void pointer
+****************
+
+hey
+
+
+
+|
+|
+|
+|
+_________________
+### printf()
+****************
 
 .
