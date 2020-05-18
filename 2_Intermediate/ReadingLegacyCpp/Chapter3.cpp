@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-
+#include <stdio.h>
 // Macros
 #define SQ(a) (a)*(a)
 #define ARRAY_SIZE 5
@@ -45,6 +45,17 @@ int main(int argc, char const *argv[]) {
   std::cout << "The result of the substraction was: " << resultSubstraction << '\n';
 
   op = addition;
+
+  const char* greeting = "Hi, Pablo";
+  printf("This is my greeting: %s", greeting);
+  printf("\n \n");
+  printf("Just first letter: %c", greeting[0]);
+  printf("\n \n");
+  printf("This is a pointer: %p", greeting);
+  printf("\n \n");
+  printf("This is hexadecimal: %x", greeting);
+  printf("\n");
+  printf("This is hexadecimal with some format: 0x%08x", greeting);
 
   return 0;
 }
