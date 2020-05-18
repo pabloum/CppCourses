@@ -35,7 +35,7 @@ int main(int argc, char const *argv[]) {
   ShowValue(10);                  // This is sending Rvalue
 
   LOG("The final value: ");
-  print(GetValue());          // This is sending Lvalue
+  print(GetValue());              // This is sending Lvalue
   return 0;
 }
 

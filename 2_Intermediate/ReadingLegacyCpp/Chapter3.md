@@ -165,7 +165,7 @@ _________________
  It was used a lot for debugging. It might appear commented.
 
  - This function takes N number of parameters but the first one is always the format string.
-    * Foramat string: mix of text and placeholders (which will be substituted with the value of a variable)
+    * Format string: mix of text and placeholders (which will be substituted with the value of a variable)
   e.g. `printf("This is my value %d \n", value);`
 
 * %s -> string
@@ -173,9 +173,9 @@ _________________
 * %f -> float
 * %x -> hex
 
-  - There could be decorators, such as how many decimals do I want to use and or how many hex deigts I want to print.
+  - There could be decorators, such as how many decimals do I want to use and or how many hex digits I want to print.
 
-  Documentation is available online.
+  Documentation is available online. Recommended: cppreference
 
 
 _________________
@@ -183,5 +183,5 @@ _________________
 *****************
 We should read old code and understand it. But don't use it as template. We don't write code like that anymore!!
 
-Use vectors, lambdas, polymorphism, but try to avoid this old stuff. It is important for you to understand it anyway. 
+Use vectors, lambdas, polymorphism, but try to avoid this old stuff. It is important for you to understand it anyway.
 .
