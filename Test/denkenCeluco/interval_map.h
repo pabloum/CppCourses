@@ -48,6 +48,8 @@
                   }
               }
 
+              //--------------------------
+              //--------------------------
               // Completes till new kyeBegin with prevous end value
               if (m_map.find(keyBegin) == m_map.end()) {
                   for (K key = m_map.rbegin()->first; key < keyBegin; key++) {
@@ -55,6 +57,8 @@
                   }
               }
 
+              //--------------------------
+              //--------------------------
               // Fills new interval
               for (K key = keyBegin; key < keyEnd; key++) {
                   // Checks if the key is new or if it should Overwrite
