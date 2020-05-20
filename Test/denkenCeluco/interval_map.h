@@ -31,43 +31,41 @@
               return;
           }
 
-          // checking that the new value is not equal to the previous one
-          if (!(m_map.rbegin()->second == val)) { // TODO - change this
+          //--------------------------
+          //--------------------------
+          // checking if the key already exists
+          if (m_map.count(keyEnd) >= 1 || m_map.count(keyBegin) >= 1) {
 
-              // checking if the key already exists
-              if (m_map.count(keyEnd) >= 1 || m_map.count(keyBegin) >= 1) {
-
-                  // checking that the new value is not equal to the next one or to the previous.
-                  // We need to preserve the solution canonical
-                  if  (
-                        (std::prev(m_map.find(keyBegin)))->second == val ||
-                        (m_map.find(keyEnd))->second == val
-                      )
-                  {
-                      return;
-                  }
+              // checking that the new value is not equal to the next one or to the previous.
+              // We need to preserve the solution canonical
+              if  (
+                    (std::prev(m_map.find(keyBegin)))->second == val ||
+                    (m_map.find(keyEnd))->second == val
+                  )
+              {
+                  return; // Just terminate the function
               }
+          }
 
-              //--------------------------
-              //--------------------------
-              // Completes till new kyeBegin with prevous end value
-              if (m_map.find(keyBegin) == m_map.end()) {
-                  for (K key = m_map.rbegin()->first; key < keyBegin; key++) {
-                      m_map.insert(m_map.end(), std::make_pair(key, m_map.rbegin()->second));
-                  }
+          //--------------------------
+          //--------------------------
+          // Completes till new kyeBegin with prevous end value
+          if (m_map.find(keyBegin) == m_map.end()) {
+              for (K key = m_map.rbegin()->first; key < keyBegin; key++) {
+                  m_map.insert(m_map.end(), std::make_pair(key, m_map.rbegin()->second));
               }
+          }
 
-              //--------------------------
-              //--------------------------
-              // Fills new interval
-              for (K key = keyBegin; key < keyEnd; key++) {
-                  // Checks if the key is new or if it should Overwrite
-                  if (m_map.find(key) == m_map.end()) {
-                      m_map.insert(m_map.end(), std::make_pair(key, val));
-                  }
-                  else {
-                      m_map.find(key)->second = val;
-                  }
+          //--------------------------
+          //--------------------------
+          // Fills new interval
+          for (K key = keyBegin; key < keyEnd; key++) {
+              // Checks if the key is new or if it should Overwrite
+              if (m_map.find(key) == m_map.end()) {
+                  m_map.insert(m_map.end(), std::make_pair(key, val));
+              }
+              else {
+                  m_map.find(key)->second = val;
               }
           }
       }
