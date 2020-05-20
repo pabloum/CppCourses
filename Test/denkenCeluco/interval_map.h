@@ -68,13 +68,9 @@
           return (--m_map.upper_bound(key))->second;
       }
 
-      void print_map() {
-          typename std::map<K, V>::iterator it; // declare an iterator
-          it = m_map.begin();    // initialize the iterator
-
-          while (it != m_map.end()) {
-              std::cout << "Key: " << it->first << ". Value: " << it->second << std::endl;
-              ++it;
+      void show() {
+          for (auto pair : m_map) {
+            std::cout << "Key: " << pair.first << ". Value: " << pair.second << '\n';
           }
       }
   };
