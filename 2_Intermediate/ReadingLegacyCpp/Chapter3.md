@@ -49,7 +49,7 @@ Sets up a synonim that you could think as a type, but it is just a new name for 
 
 
 example:
-    typedef int BOOL; -> Before a type bool existed.
+    `typedef int BOOL;` -> Before a type bool existed.
 
 
 Why?
