@@ -227,7 +227,7 @@ When you are done, please complete the form and click Compile. You can improve a
 Please submit your solution until 2:38 UTC.
 
 Further instructions will be given once your code compiles correctly.
-©2002-2018 think-cell Sales GmbH & Co. KG
+pensa-portable Sales GmbH & Co. KG
 
 Contact information and legal notice
 
