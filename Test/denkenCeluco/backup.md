@@ -209,9 +209,12 @@ You can download this source code here:
 
 Your task is to implement the function assign. Your implementation is graded by these criteria in this order:
 
-    Type requirements are met: You must adhere to the specification of the key and value type given above.
+    Type requirements are met: You must adhere to the specification of the key and value type given above. For example, many solutions we receive use operations other than those that are explicitly stated in the task description. We have to reject many solutions because they assume that V is default-constructible, e.g., by using std::map::operator[]
+
     Correctness: Your program should produce a working interval_map with the behavior described above. In particular, pay attention to the validity of iterators. It is illegal to dereference end iterators. Consrider using a checking STL implementation such as the one shipped with Visual C++ or GCC.
+
     Canonicity: The representation in m_map must be canonical.
+
     Running time: Imagine your implementation is part of a library, so it should be big-O optimal. In addition:
         Do not make big-O more operations on K and V than necessary, because you do not know how fast operations on K/V are; remember that constructions, destructions and assignments are operations as well.
         Do not make more than two operations of amortized O(log N), in contrast to O(1), running time, where N is the number of elements in m_map. Any operation that needs to find a position in the map "from scratch", without being given a nearby position, is such an operation.
