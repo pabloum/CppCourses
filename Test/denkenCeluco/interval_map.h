@@ -32,12 +32,12 @@
           }
 
           auto itComponentBegin = m_map.find(keyBegin);
-          auto itComponentEnd = m_map.find(keyEnd)
+          auto itComponentEnd = m_map.find(keyEnd);
 
           //--------------------------
           //--------------------------
           // checking if the key already exists
-          if (itComponentEnd >= 1 || m_map.count(keyBegin) >= 1) {
+          if (m_map.count(keyEnd) >= 1 || m_map.count(keyBegin) >= 1) {
 
               // checking that the new value is not equal to the next one or to the previous.
               // We need to preserve the solution canonical
