@@ -39,8 +39,8 @@
               // checking that the new value is not equal to the next one or to the previous.
               // We need to preserve the solution canonical
               if  (
-                    (std::prev(m_map.find(keyBegin)))->second == val ||
-                    (m_map.find(keyEnd))->second == val
+                    ((std::prev(m_map.find(keyBegin)))->second == val) ||
+                    ((m_map.find(keyEnd))->second == val)
                   )
               {
                   return; // Just terminate the function
