@@ -62,7 +62,8 @@
           //--------------------------
           //--------------------------
           // Fills new interval
-          // TODO -> change this for to iterators
+          // TODO -> change this for to iterators upper_bound(); --> cHECK it out
+          // for (auto it = itComponentBegin; it != itComponentEnd; it++) {
           for (K key = keyBegin; key < keyEnd; key++) {
               // Checks if the key is new or if it should Overwrite
               auto itComponent = m_map.find(key);
