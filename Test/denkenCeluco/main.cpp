@@ -20,15 +20,15 @@ int main(int argc, char const *argv[]) {
   // interval_map <int, char> myIntCharMap ('F');
   // myIntCharMap.assign(-2147483645,-2147483641,'P');
   // myIntCharMap.show();
-  std::printf("El char más bajo: %c\n", std::numeric_limits<char>::lowest() + 128 + 65);
-
-  if (std::numeric_limits<char>::lowest() == WCHAR_MIN) {
-    std::cout << "Lowest char is equal to  WCHAR_MIN" << '\n';
-  } else if (std::numeric_limits<char>::lowest() == CHAR_MIN) {
-    std::cout << "Lowest char is equal to  CHAR_MIN" << '\n';
-  } else if(WCHAR_MIN == CHAR_MIN) {
-    std::cout << "WCHAR_MIN == CHAR_MIN" << '\n';
-  }
+  // std::printf("El char más bajo: %c\n", std::numeric_limits<char>::lowest() + 128 + 65);
+  //
+  // if (std::numeric_limits<char>::lowest() == WCHAR_MIN) {
+  //   std::cout << "Lowest char is equal to  WCHAR_MIN" << '\n';
+  // } else if (std::numeric_limits<char>::lowest() == CHAR_MIN) {
+  //   std::cout << "Lowest char is equal to  CHAR_MIN" << '\n';
+  // } else if(WCHAR_MIN == CHAR_MIN) {
+  //   std::cout << "WCHAR_MIN == CHAR_MIN" << '\n';
+  // }
   // print_lowest();
   return 0;
 }
