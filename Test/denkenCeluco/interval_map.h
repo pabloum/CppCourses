@@ -51,12 +51,10 @@
 
 
           if (!(itBeginLowerBound->second == val) && !(itBeginUpperBound->second == val)) {
-            // m_map.insert(std::make_pair(keyBegin, val));
             m_map.insert_or_assign(m_map.find(keyBegin), keyBegin, val);
           }
 
           if (!(itEndLowerBound->second == val) && !(itEndUpperBound->second == val)) {
-            // m_map.insert(std::make_pair(keyEnd, initialValue));
             if (itEndUpperBound == m_map.end()) {
               if (!(m_map.rbegin()->second == initialValue)) {
                 m_map.insert_or_assign(m_map.find(keyEnd), keyEnd, initialValue);
