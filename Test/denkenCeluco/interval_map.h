@@ -4,6 +4,9 @@
   #include <map>
   #include <limits>
 
+  void LOG() {
+  }
+
   template<typename K, typename V>
   class interval_map
   {
@@ -30,6 +33,39 @@
               return;
           }
 
+          V initialValue = m_map.begin()->second;
+
+          // typename std::map<K,V>::iterator
+          auto itBeginLowerBound = std::prev(m_map.lower_bound(keyBegin));
+          auto itBeginUpperBound = m_map.upper_bound(keyBegin);
+
+          auto itEndLowerBound = std::prev(m_map.lower_bound(keyEnd));
+          auto itEndUpperBound = m_map.upper_bound(keyEnd);
+
+          // Debugging prints
+          // std::cout << "itBeginLowerBound Value = " << itBeginLowerBound->first << " - " << itBeginLowerBound->second << '\n';
+          // std::cout << "itBeginUpperBound Value = " << itBeginUpperBound->first << " - " << itBeginUpperBound->second << '\n';
+          //
+          // std::cout << "itEndLowerBound Value = " << itEndLowerBound->first << " - " << itEndLowerBound->second << '\n';
+          // std::cout << "itEndUpperBound Value = " << itEndUpperBound->first << " - " << itEndUpperBound->second << '\n';
+
+
+          if (!(itBeginLowerBound->second == val) && !(itBeginUpperBound->second == val)) {
+            // m_map.insert(std::make_pair(keyBegin, val));
+            m_map.insert_or_assign(m_map.find(keyBegin), keyBegin, val);
+          }
+
+          if (!(itEndLowerBound->second == val) && !(itEndUpperBound->second == val)) {
+            // m_map.insert(std::make_pair(keyEnd, initialValue));
+            if (itEndUpperBound == m_map.end()) {
+              if (!(m_map.rbegin()->second == initialValue)) {
+                m_map.insert_or_assign(m_map.find(keyEnd), keyEnd, initialValue);
+              }
+            } else {
+              m_map.insert_or_assign(m_map.find(keyEnd), keyEnd, initialValue);
+            }
+
+          }
       }
 
       // look-up of the value associated with key
