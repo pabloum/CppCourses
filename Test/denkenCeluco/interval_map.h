@@ -54,15 +54,18 @@
             m_map.insert_or_assign(m_map.find(keyBegin), keyBegin, val);
           }
 
-          if (!(itEndLowerBound->second == val) && !(itEndUpperBound->second == val)) {
-            if (itEndUpperBound == m_map.end()) {
-              if (!(m_map.rbegin()->second == initialValue)) {
-                m_map.insert_or_assign(m_map.find(keyEnd), keyEnd, initialValue);
-              }
-            } else {
-              m_map.insert_or_assign(m_map.find(keyEnd), keyEnd, initialValue);
-            }
+          bool shouldInsertEnd = (
+            !(itEndLowerBound->second == val) && !(itEndUpperBound->second == val)
+            &&
+            (
+              (itEndUpperBound == m_map.end() && !(m_map.rbegin()->second == initialValue))
+              ||
+              (itEndUpperBound != m_map.end())
+            )
+          );
 
+          if (shouldInsertEnd){
+            m_map.insert_or_assign(m_map.find(keyEnd), keyEnd, initialValue);
           }
       }
 
