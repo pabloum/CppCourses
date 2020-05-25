@@ -58,13 +58,13 @@
             !(itEndLowerBound->second == val) && !(itEndUpperBound->second == val)
             &&
             (
-              (itEndUpperBound == m_map.end() && !(m_map.rbegin()->second == initialValue))
-              ||
               (itEndUpperBound != m_map.end())
+              ||
+              !(m_map.rbegin()->second == initialValue)
             )
           );
 
-          if (shouldInsertEnd){
+          if (shouldInsertEnd) {
             m_map.insert_or_assign(m_map.find(keyEnd), keyEnd, initialValue);
           }
       }
