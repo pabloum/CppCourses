@@ -65,55 +65,55 @@ the comparison that was used to construct them.
 
 Associative container requirements (in addition to general container requirements):
 
-std::pair<iterator, bool> insert(std::pair<const key_type, T> const" t)
+`std::pair<iterator, bool> insert(std::pair<const key_type, T> const" t)`
 Effects: Inserts t if and only if there is no element in the container with key equivalent to
 the key of t. The bool component of the returned pair is true if and only if the insertion
 takes place, and the iterator component of the pair points to the element with key equivalent
 to the key of t.
 Complexity: logarithmic
 
-iterator insert(const_iterator p, std::pair<const key_type, T> const" t)
+`iterator insert(const_iterator p, std::pair<const key_type, T> const" t)`
 Effects: Inserts t if and only if there is no element with key equivalent to the key of t in
 containers with unique keys. Always returns the iterator pointing to the element with key
 equivalent to the key of t.
 Complexity: logarithmic in general, but amortized constant if t is inserted right before p.
 
-size_type erase(key_type const" k)
+`size_type erase(key_type const" k)`
 Effects: Erases all elements in the container with key equivalent to k. Returns the number of
 erased elements.
 Complexity: log(size of container) + number of elements with key k
 
-iterator erase(const_iterator q)
+`iterator erase(const_iterator q)`
 Effects: Erases the element pointed to by q. Returns an iterator pointing to the element
 immediately following q prior to the element being erased. If no such element exists, returns
 end().
 Complexity: Amortized constant
 
-iterator erase(const_iterator q1, const_iterator q2)
+`iterator erase(const_iterator q1, const_iterator q2)`
 Effects: Erases all the elements in the left-inclusive and right-exclusive range [q1,q2).
 Returns q2.
 Complexity: Amortized O(N) where N has the value distance(q1, q2).
 
-void clear()
+`void clear()`
 Effects: erase(begin(), end())
 Post-Condition: empty() returns true
 Complexity: linear in size().
 
-iterator find(key_type const" k);
+`iterator find(key_type const" k);`
 Effects: Returns an iterator pointing to an element with the key equivalent to k, or end() if
 such an element is not found.
 Complexity: logarithmic
 
-size_type count(key_type constquot;& k)
+`size_type count(key_type constquot;& k)`
 Effects: Returns the number of elements with key equivalent to k
 Complexity: log(size of map) + number of elements with key equivalent to k
 
-iterator lower_bound(key_type const" k)
+`iterator lower_bound(key_type const" k)`
 Effects: Returns an iterator pointing to the first element with key not less than k, or end()
 if such an element is not found.
 Complexity: logarithmic
 
-iterator upper_bound(key_type const" k)
+`iterator upper_bound(key_type const" k)`
 Effects: Returns an iterator pointing to the first element with key greater than k, or end()
 if such an element is not found.
 Complexity: logarithmic
