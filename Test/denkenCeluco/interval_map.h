@@ -4,23 +4,24 @@
   #include <map>
   #include <limits>
 
+  #include <cstdarg>
 
   template<typename K, typename V>
   class interval_map
   {
       std::map<K, V> m_map;
 
-      void LOG(typename std::map<K,V>::iterator itBeginLowerBound,
-               typename std::map<K,V>::iterator itBeginUpperBound,
-               typename std::map<K,V>::iterator itEndLowerBound,
-               typename std::map<K,V>::iterator itEndUpperBound)
+      void LOG(typename std::map<K,V>::iterator itBound) {
+        std::cout << "coso Value = " << itBound->first << " - " << itBound->second << '\n';
+      }
+
+      template<typename... Args>
+      void LOG(typename std::map<K,V>::iterator itBound, Args... args)
       {
         // Debugging prints
-        std::cout << "itBeginLowerBound Value = " << itBeginLowerBound->first << " - " << itBeginLowerBound->second << '\n';
-        std::cout << "itBeginUpperBound Value = " << itBeginUpperBound->first << " - " << itBeginUpperBound->second << '\n';
-
-        std::cout << "itEndLowerBound Value = " << itEndLowerBound->first << " - " << itEndLowerBound->second << '\n';
-        std::cout << "itEndUpperBound Value = " << itEndUpperBound->first << " - " << itEndUpperBound->second << '\n';
+        LOG(itBound);
+        LOG(args...);
+        std::printf("\n");
       }
 
   public:
