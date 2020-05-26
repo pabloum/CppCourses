@@ -33,14 +33,33 @@
               return;
           }
 
-          V initialValue = m_map.begin()->second;
-
           // typename std::map<K,V>::iterator
           auto itBeginLowerBound = std::prev(m_map.lower_bound(keyBegin));
           auto itBeginUpperBound = m_map.upper_bound(keyBegin);
 
           auto itEndLowerBound = std::prev(m_map.lower_bound(keyEnd));
           auto itEndUpperBound = m_map.upper_bound(keyEnd);
+
+          V initialValue = itEndLowerBound->second;
+
+          // Insert in begining of new interval
+          if (!(itBeginLowerBound->second == val) && !(itBeginUpperBound->second == val)) {
+            m_map.insert_or_assign(m_map.find(keyBegin), keyBegin, val);
+          }
+
+          // Insert in the end of new interval, the previous value.
+          if (m_map.find(keyEnd) == m_map.end()) {
+            m_map.insert_or_assign(m_map.find(keyEnd), keyEnd, initialValue);
+          }
+
+          // Updating begin iterators
+          itBeginLowerBound = std::prev(m_map.lower_bound(keyBegin));
+          itBeginUpperBound = m_map.upper_bound(keyBegin);
+
+          itEndLowerBound = std::prev(m_map.lower_bound(keyEnd));
+          itEndUpperBound = m_map.upper_bound(keyEnd);
+
+          // initialValue = itEndLowerBound->second;
 
           // Debugging prints
           // std::cout << "itBeginLowerBound Value = " << itBeginLowerBound->first << " - " << itBeginLowerBound->second << '\n';
@@ -50,22 +69,18 @@
           // std::cout << "itEndUpperBound Value = " << itEndUpperBound->first << " - " << itEndUpperBound->second << '\n';
 
 
-          if (!(itBeginLowerBound->second == val) && !(itBeginUpperBound->second == val)) {
-            m_map.insert_or_assign(m_map.find(keyBegin), keyBegin, val);
-          }
+          auto itKeyEnd = m_map.find(keyEnd);
+          // std::cout << "itKeyEnd Value = " << itKeyEnd->first << " - " << itKeyEnd->second << '\n';
 
-          bool shouldInsertEnd = (
-            !(itEndLowerBound->second == val) && !(itEndUpperBound->second == val)
-            &&
-            (
-              (itEndUpperBound != m_map.end())
-              ||
-              !(m_map.rbegin()->second == initialValue)
-            )
+          // Delete previous data in that inerval if needed
+          bool shouldDelete = (
+            itBeginUpperBound != m_map.find(keyEnd) &&
+            itEndLowerBound   != m_map.find(keyBegin)
           );
 
-          if (shouldInsertEnd) {
-            m_map.insert_or_assign(m_map.find(keyEnd), keyEnd, initialValue);
+          if (shouldDelete) {
+            m_map.erase(itBeginUpperBound, itKeyEnd);
+            std::cout << " This should be deleting " << '\n';
           }
       }
 

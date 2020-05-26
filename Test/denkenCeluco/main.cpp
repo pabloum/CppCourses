@@ -14,6 +14,7 @@ int main(int argc, char const *argv[]) {
   myUintCharMap.assign(15,24,'Q');
   myUintCharMap.assign(18,29,'R');
   myUintCharMap.assign(8,12,'R');
+  myUintCharMap.assign(8,12,'F');
   // myUintCharMap.assign(8,12,'W');
   myUintCharMap.show();
 
