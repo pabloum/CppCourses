@@ -40,6 +40,13 @@
           auto itEndLowerBound = std::prev(m_map.lower_bound(keyEnd));
           auto itEndUpperBound = m_map.upper_bound(keyEnd);
 
+          // Debugging prints
+          // std::cout << "itBeginLowerBound Value = " << itBeginLowerBound->first << " - " << itBeginLowerBound->second << '\n';
+          // std::cout << "itBeginUpperBound Value = " << itBeginUpperBound->first << " - " << itBeginUpperBound->second << '\n';
+          //
+          // std::cout << "itEndLowerBound Value = " << itEndLowerBound->first << " - " << itEndLowerBound->second << '\n';
+          // std::cout << "itEndUpperBound Value = " << itEndUpperBound->first << " - " << itEndUpperBound->second << '\n';
+
           V initialValue = itEndLowerBound->second;
 
           // Insert in begining of new interval
@@ -53,24 +60,10 @@
           }
 
           // Updating begin iterators
-          itBeginLowerBound = std::prev(m_map.lower_bound(keyBegin));
           itBeginUpperBound = m_map.upper_bound(keyBegin);
-
           itEndLowerBound = std::prev(m_map.lower_bound(keyEnd));
-          itEndUpperBound = m_map.upper_bound(keyEnd);
-
-          // initialValue = itEndLowerBound->second;
-
-          // Debugging prints
-          // std::cout << "itBeginLowerBound Value = " << itBeginLowerBound->first << " - " << itBeginLowerBound->second << '\n';
-          // std::cout << "itBeginUpperBound Value = " << itBeginUpperBound->first << " - " << itBeginUpperBound->second << '\n';
-          //
-          // std::cout << "itEndLowerBound Value = " << itEndLowerBound->first << " - " << itEndLowerBound->second << '\n';
-          // std::cout << "itEndUpperBound Value = " << itEndUpperBound->first << " - " << itEndUpperBound->second << '\n';
-
 
           auto itKeyEnd = m_map.find(keyEnd);
-          // std::cout << "itKeyEnd Value = " << itKeyEnd->first << " - " << itKeyEnd->second << '\n';
 
           // Delete previous data in that inerval if needed
           bool shouldDelete = (
@@ -80,7 +73,6 @@
 
           if (shouldDelete) {
             m_map.erase(itBeginUpperBound, itKeyEnd);
-            std::cout << " This should be deleting " << '\n';
           }
       }
 
