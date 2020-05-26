@@ -4,13 +4,24 @@
   #include <map>
   #include <limits>
 
-  void LOG() {
-  }
 
   template<typename K, typename V>
   class interval_map
   {
       std::map<K, V> m_map;
+
+      void LOG(typename std::map<K,V>::iterator itBeginLowerBound,
+               typename std::map<K,V>::iterator itBeginUpperBound,
+               typename std::map<K,V>::iterator itEndLowerBound,
+               typename std::map<K,V>::iterator itEndUpperBound)
+      {
+        // Debugging prints
+        std::cout << "itBeginLowerBound Value = " << itBeginLowerBound->first << " - " << itBeginLowerBound->second << '\n';
+        std::cout << "itBeginUpperBound Value = " << itBeginUpperBound->first << " - " << itBeginUpperBound->second << '\n';
+
+        std::cout << "itEndLowerBound Value = " << itEndLowerBound->first << " - " << itEndLowerBound->second << '\n';
+        std::cout << "itEndUpperBound Value = " << itEndUpperBound->first << " - " << itEndUpperBound->second << '\n';
+      }
 
   public:
       // constructor associates whole range of K with val by inserting (K_min, val)
@@ -40,12 +51,7 @@
           auto itEndLowerBound = std::prev(m_map.lower_bound(keyEnd));
           auto itEndUpperBound = m_map.upper_bound(keyEnd);
 
-          // Debugging prints
-          // std::cout << "itBeginLowerBound Value = " << itBeginLowerBound->first << " - " << itBeginLowerBound->second << '\n';
-          // std::cout << "itBeginUpperBound Value = " << itBeginUpperBound->first << " - " << itBeginUpperBound->second << '\n';
-          //
-          // std::cout << "itEndLowerBound Value = " << itEndLowerBound->first << " - " << itEndLowerBound->second << '\n';
-          // std::cout << "itEndUpperBound Value = " << itEndUpperBound->first << " - " << itEndUpperBound->second << '\n';
+          LOG(itBeginLowerBound, itBeginUpperBound, itEndLowerBound, itEndUpperBound);
 
           V initialValue = itEndLowerBound->second;
 
