@@ -12,7 +12,7 @@
       std::map<K, V> m_map;
 
       void LOG(typename std::map<K,V>::iterator itBound) {
-        std::cout << "coso Value = " << itBound->first << " - " << itBound->second << '\n';
+        std::cout << "itBound Value = " << itBound->first << " - " << itBound->second << '\n';
       }
 
       template<typename... Args>
