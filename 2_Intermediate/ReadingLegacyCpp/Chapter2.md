@@ -109,3 +109,33 @@ When you're done, make sure to use delete[]
 |
 
 ### C-style strings
+
+std::string not used
+
+`char *my_sting`
+
+Array of char
+Last element is a null character \0
+
+Large collection of functions with name that start with `str` in the header cstring. i.e. #include <cstring>
+
+e.g strcpy()
+
+Common error: Forget to include room for the null characte. So, people it is common to use a +-1 adjustment por that last element which is part of the array, but not of the string
+
+
+For modern use, there is a constructor in std::string where you can send a char*, and then it will create the right std::string
+
+And for the other way around, the std::string class has a member function that returns the string in a C style. Such member function is `.c_str()`
+
+strcpy(target, source);
+
+|
+|
+|
+|
+|
+
+### Summary
+c style array don't bound check if you try to write past the end of them
+              they don't self grow
