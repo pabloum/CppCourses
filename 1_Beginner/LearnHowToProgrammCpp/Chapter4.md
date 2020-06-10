@@ -141,6 +141,34 @@ std::cout << "Vi  has " << threes << " number 3. \n";
 std::cout << "The first element of Vs  has " << tees << " letter T. \n";
 
 
+=> Summary
+.push_back(item)
+.insert(); // try to use it just we needed
+type safety <type>
+
+string is a collection of characters
+|
+|
+|
+|
+|
+|
+|
+
 ### Behind more curtains.
 
+In C++, operators are just functions.
+
+Operator overloading
+
+Templates are a powerful way of creating a library.
+  They work on any type without giving up type safety
+
+Try making use of overloading
+
+
 ### Summary
+
+Templates reduce bugs, and code.
+It makes your code readable
+Use vector, dont create a new one. Use what already exists.
